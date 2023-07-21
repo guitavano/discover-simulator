@@ -7,11 +7,10 @@ module.exports = {
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
-      },
+      boxShadow: {
+        'google': '0 2px 5px 1px rgba(64,60,67,.16)',
+        'cellphone': "inset 0px 0px 2px 0px rgba(0,0,0,0.75)"
+      }
     },
   },
   plugins: [],

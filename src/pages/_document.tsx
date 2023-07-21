@@ -4,6 +4,7 @@ export default function Document() {
   return (
     <Html lang="en">
       <Head>
+        <meta name="google-site-verification" content="SP-NDt1OTP6iZ_yeFKjE-GXkC6GXnJ-Cp-KSmbARGTc" />
         <title>Google Discover Simulator - Test Preview</title>
         <link rel="icon" type="image/x-icon" href="/icon.png" />
       </Head>

@@ -14,32 +14,32 @@ export default function Home() {
     <main
       className="font-[montserrat,sans-serif]"
     >
-      <div className={`w-[100vw] h-[100vh] flex justify-center items-center`}>
-        <div className='w-full max-w-[1080px] h-[90vh] flex justify-between'>
-          <div>
-            <div className='flex flex-col gap-8'>
-              <h1 className='text-[42px] font-bold '>Google Discover Simulator</h1>
+      <div className={`h-auto sm:h-[100vh] flex justify-center items-center`}>
+        <div className='w-full max-w-[1080px] sm:h-[90vh] flex flex-col sm:flex-row justify-between items-center'>
+          <div className="px-4 sm:px-0">
+            <h1 className='text-[42px] font-bold mb-4 text-center sm:text-left'>Google Discover Simulator</h1>
+            <div className='flex flex-col gap-8 max-w-[90%]' >
               <div className='flex flex-col gap-2'>
                 <label htmlFor="" className='text-[32px] font-bold'>Title</label>
-                <input type="text" className='h-[40px] px-2 rounded-sm' placeholder='Your title here' onChange={(e) => {setTitle(e.target.value)}}/>
+                <input type="text" className='h-[40px] px-2 rounded-sm border-[1px] border-[#ababab]' placeholder='Your title here' onChange={(e) => {setTitle(e.target.value)}}/>
               </div>
               <div className='flex flex-col gap-2'>
                 <label htmlFor="" className='text-[32px] font-bold'>Image Link</label>
-                <input type="text" className='h-[40px] px-2 rounded-sm' placeholder='Your image link here' onChange={(e) => {setImage(e.target.value)}}/>
+                <input type="text" className='h-[40px] px-2 rounded-sm border-[1px] border-[#ababab]' placeholder='Your image link here' onChange={(e) => {setImage(e.target.value)}}/>
               </div>
               <div className='flex flex-col gap-2'>
                 <label htmlFor="" className='text-[32px] font-bold'>Website Name</label>
-                <input type="text" className='h-[40px] px-2 rounded-sm' placeholder='Your website name here' onChange={(e) => {setName(e.target.value)}}/>
+                <input type="text" className='h-[40px] px-2 rounded-sm border-[1px] border-[#ababab]' placeholder='Your website name here' onChange={(e) => {setName(e.target.value)}}/>
               </div>
               <div className='flex flex-col gap-2'>
                 <label htmlFor="" className='text-[32px] font-bold'>Website Image</label>
-                <input type="text" className='h-[40px] px-2 rounded-sm' placeholder='Your website image link here' onChange={(e) => {setSiteImage(e.target.value)}}/>
+                <input type="text" className='h-[40px] px-2 rounded-sm border-[1px] border-[#ababab]' placeholder='Your website image link here' onChange={(e) => {setSiteImage(e.target.value)}}/>
               </div>
               
             </div>
             
           </div>
-          <div className="bg-[#232323] h-full max-h-[700px] w-full max-w-[380px] rounded-[32px] flex flex-col justify-evenly items-center shadow-md">
+          <div className="bg-[#232323] h-[700px] sm:h-full max-h-[700px] w-full max-w-[380px] rounded-[32px] flex flex-col justify-evenly items-center shadow-google mt-10 sm:mt-0">
             <div className='bg-[#3e3e3e] w-[80px] h-[10px] rounded-full'></div>
             <div className='bg-[white] w-[85%] h-[85%] rounded-sm shadow-cellphone'>
               <div className='p-4'>

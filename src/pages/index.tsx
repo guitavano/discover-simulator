@@ -1,67 +1,106 @@
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 
 import Head from '../../node_modules/next/head'
 
 
 export default function Home() {
 
+  const [page, setPage] = useState("Your page here")
   const [title, setTitle] = useState("Your title here")
   const [image, setImage] = useState("/preview.png")
   const [name, setName] = useState("Name of your website")
   const [siteImage, setSiteImage] = useState("/profile.png")
 
+  const refInput = useRef(null);
+
+  function fetchPage(){
+    fetch(`/api/url?url=${page}`)
+    .then(response => response.json())
+    .then(result => {
+      setTitle(result.title)
+      setImage(result.image)
+      setName(result.name)
+      setSiteImage(result.siteImage)
+    })
+  }
+
+  function clearPage(){
+    setPage("Your page here");
+    
+    if(refInput.current) (refInput.current as HTMLInputElement).value = ""
+
+    setTitle("Your title here")
+    setImage("/preview.png")
+    setName("Name of your website")
+    setSiteImage("/profile.png")
+  }
+
   return (
-    <main
-      className="font-[montserrat,sans-serif]"
-    >
-      <div className={`h-auto sm:h-[100vh] flex justify-center items-center`}>
-        <div className='w-full max-w-[1080px] sm:h-[90vh] flex flex-col sm:flex-row justify-between items-center'>
-          <div className="px-4 sm:px-0">
-            <h1 className='text-[42px] font-bold mb-4 text-center sm:text-left'>Google Discover Simulator</h1>
-            <div className='flex flex-col gap-8 max-w-[90%]' >
-              <div className='flex flex-col gap-2'>
-                <label htmlFor="" className='text-[32px] font-bold'>Title</label>
-                <input type="text" className='h-[40px] px-2 rounded-sm border-[1px] border-[#ababab]' placeholder='Your title here' onChange={(e) => {setTitle(e.target.value)}}/>
-              </div>
-              <div className='flex flex-col gap-2'>
-                <label htmlFor="" className='text-[32px] font-bold'>Image Link</label>
-                <input type="text" className='h-[40px] px-2 rounded-sm border-[1px] border-[#ababab]' placeholder='Your image link here' onChange={(e) => {setImage(e.target.value)}}/>
-              </div>
-              <div className='flex flex-col gap-2'>
-                <label htmlFor="" className='text-[32px] font-bold'>Website Name</label>
-                <input type="text" className='h-[40px] px-2 rounded-sm border-[1px] border-[#ababab]' placeholder='Your website name here' onChange={(e) => {setName(e.target.value)}}/>
-              </div>
-              <div className='flex flex-col gap-2'>
-                <label htmlFor="" className='text-[32px] font-bold'>Website Image</label>
-                <input type="text" className='h-[40px] px-2 rounded-sm border-[1px] border-[#ababab]' placeholder='Your website image link here' onChange={(e) => {setSiteImage(e.target.value)}}/>
+    <>
+      <Head>
+        <title>Google Discover Simulator - Test Preview</title>
+      </Head>
+      <main
+        className="font-[montserrat,sans-serif]"
+      >
+        <div className={`h-auto sm:h-[100vh] flex flex-col pb-[42px] sm:pb-0 gap-4 justify-center items-center`}>
+          <div className='w-full max-w-[1080px] sm:h-[90vh] flex flex-col sm:flex-row justify-between items-center'>
+            <div className="px-4 sm:px-0">
+              <h1 className='text-[42px] font-bold mb-4 text-center sm:text-left'>Google Discover Simulator</h1>
+              <div className='flex flex-col gap-8 max-w-[90%]' >
+                <div className='flex flex-col gap-2'>
+                  <label htmlFor="" className='text-[32px] font-bold'>Your Page</label>
+                  <div className='flex w-full gap-2'>
+                    <input type="text" className='w-full h-[40px] px-2 rounded-sm border-[1px] border-[#ababab]' ref={refInput} placeholder='Your page here' onChange={(e) => {setPage(e.target.value)}}/>
+                    <button className="px-3 bg-[#4285f4] text-white rounded-sm" onClick={() => fetchPage()}>Fetch</button>
+                    <button className="px-3 bg-[#ff641a] text-white rounded-sm" onClick={() => clearPage()}>Clear</button>
+                  </div>  
+                </div>
+                <div className='flex flex-col gap-2'>
+                  <label htmlFor="" className='text-[32px] font-bold'>Title</label>
+                  <input type="text" className='h-[40px] px-2 rounded-sm border-[1px] border-[#ababab]' placeholder='Your title here' value={title} onChange={(e) => {setTitle(e.target.value)}}/>
+                </div>
+                <div className='flex flex-col gap-2'>
+                  <label htmlFor="" className='text-[32px] font-bold'>Image Link</label>
+                  <input type="text" className='h-[40px] px-2 rounded-sm border-[1px] border-[#ababab]' placeholder='Your image link here' value={image} onChange={(e) => {setImage(e.target.value)}}/>
+                </div>
+                <div className='flex flex-col gap-2'>
+                  <label htmlFor="" className='text-[32px] font-bold'>Website Name</label>
+                  <input type="text" className='h-[40px] px-2 rounded-sm border-[1px] border-[#ababab]' placeholder='Your website name here' value={name} onChange={(e) => {setName(e.target.value)}}/>
+                </div>
+                <div className='flex flex-col gap-2'>
+                  <label htmlFor="" className='text-[32px] font-bold'>Website Image</label>
+                  <input type="text" className='h-[40px] px-2 rounded-sm border-[1px] border-[#ababab]' placeholder='Your website image link here' value={siteImage} onChange={(e) => {setSiteImage(e.target.value)}}/>
+                </div>
+                
               </div>
               
             </div>
-            
-          </div>
-          <div className="bg-[#232323] h-[700px] sm:h-full max-h-[700px] w-full max-w-[380px] rounded-[32px] flex flex-col justify-evenly items-center shadow-google mt-10 sm:mt-0">
-            <div className='bg-[#3e3e3e] w-[80px] h-[10px] rounded-full'></div>
-            <div className='bg-[white] w-[85%] h-[85%] rounded-sm shadow-cellphone'>
-              <div className='p-4'>
-                <div className='bg-[white] shadow-google rounded-full h-10 w-full flex items-center justify-between px-2'>
-                  <div className='flex items-center gap-2'>
-                    <img src="/google.png" alt="" className='w-[22px]'/>
-                    <span className='text-[12px] text-[gray]'>Search...</span>
+            <div id="testPrint" className="bg-[#232323] h-[700px] sm:h-full max-h-[700px] w-full max-w-[380px] rounded-[32px] flex flex-col justify-evenly items-center shadow-google mt-10 sm:mt-0">
+              <div className='bg-[#3e3e3e] w-[80px] h-[10px] rounded-full'></div>
+              <div className='bg-[white] w-[85%] h-[85%] rounded-sm shadow-cellphone'>
+                <div className='p-4'>
+                  <div className='bg-[white] shadow-google rounded-full h-10 w-full flex items-center justify-between px-2'>
+                    <div className='flex items-center gap-2'>
+                      <img src="/google.png" alt="" className='w-[22px]'/>
+                      <span className='text-[12px] text-[gray]'>Search...</span>
+                    </div>
+                    
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"></path><path fill="#4285F4" d="M12 15c1.66 0 2.99-1.34 2.99-3L15 5c0-1.66-1.34-3-3-3S9 3.34 9 5v7c0 1.66 1.34 3 3 3z"></path><path fill="#34A853" d="M11 18.92h2V22h-2z"></path><path fill="#F4B400" d="M7 12H5c0 1.93.78 3.68 2.05 4.95l1.41-1.41C7.56 14.63 7 13.38 7 12z"></path><path fill="#EA4335" d="M12 17c-1.38 0-2.63-.56-3.54-1.47l-1.41 1.41C8.32 18.21 10.07 19 12.01 19c3.87 0 6.98-3.14 6.98-7h-2c0 2.76-2.23 5-4.99 5z"></path></svg>
                   </div>
-                  
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"></path><path fill="#4285F4" d="M12 15c1.66 0 2.99-1.34 2.99-3L15 5c0-1.66-1.34-3-3-3S9 3.34 9 5v7c0 1.66 1.34 3 3 3z"></path><path fill="#34A853" d="M11 18.92h2V22h-2z"></path><path fill="#F4B400" d="M7 12H5c0 1.93.78 3.68 2.05 4.95l1.41-1.41C7.56 14.63 7 13.38 7 12z"></path><path fill="#EA4335" d="M12 17c-1.38 0-2.63-.56-3.54-1.47l-1.41 1.41C8.32 18.21 10.07 19 12.01 19c3.87 0 6.98-3.14 6.98-7h-2c0 2.76-2.23 5-4.99 5z"></path></svg>
                 </div>
-              </div>
-              <BigPreview image={image} title={title} name={name} siteImage={siteImage}/>
-              <div className='w-full h-[1px] bg-[#eaeaea]'></div>
-              <SmallPreview image={image} title={title} name={name} siteImage={siteImage}/>
+                <BigPreview image={image} title={title} name={name} siteImage={siteImage}/>
+                <div className='w-full h-[1px] bg-[#eaeaea]'></div>
+                <SmallPreview image={image} title={title} name={name} siteImage={siteImage}/>
 
-            </div>
-            <div className='bg-[black] w-[40px] h-[40px] rounded-full'></div>
-          </div>  
+              </div>
+              <div className='bg-[black] w-[40px] h-[40px] rounded-full'></div>
+            </div>  
+          </div>
+          <h2>By <a href="https://www.linkedin.com/in/guitavano/" target='_blank' className='hover:text-[#4285f4] transition-all'>Guilherme Tavano</a></h2>
         </div>
-      </div>
-    </main>
+      </main>
+    </>
   )
 }
 
@@ -72,7 +111,7 @@ function BigPreview({image, title, name, siteImage} : {image: string; title: str
         <div className={`h-[180px] bg-center rounded-[16px] bg-cover`} style={{backgroundImage: `url('${image}')`}}>
           
         </div>
-        <h2 className='font-bold pt-2'>{title}</h2>
+        <h2 className='font-bold pt-2 line-clamp-3'>{title}</h2>
       
         <Footer name={name} siteImage={siteImage}/>
       </div>
@@ -85,7 +124,7 @@ function SmallPreview({image, title, name, siteImage} : {image: string; title: s
     <div>
       <div className='p-4 flex flex-col'>
         <div className='flex justify-between gap-2'>
-          <h2 className='font-bold pt-2'>{title}</h2>
+          <h2 className='font-bold pt-2 line-clamp-4'>{title}</h2>
           <div className='block'>
             <div className={`h-[60px] w-[100px] bg-center rounded-[8px] bg-cover`} style={{backgroundImage: `url('${image}')`}}>
             
@@ -103,7 +142,7 @@ function Footer({name, siteImage} : {name: string; siteImage: string}){
     <div className='flex justify-between items-center pt-2'>
       <div className='flex items-center gap-2'>
         <div className='w-6 h-6 bg-[#f0f0f0] rounded-full'>
-          <img src={siteImage} alt="" className='w-full'/>
+          <img src={siteImage} alt="" className='w-full rounded-full'/>
         </div>
         <span className='text-[12px]'>{name}</span>
       </div>

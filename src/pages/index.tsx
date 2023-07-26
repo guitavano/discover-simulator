@@ -11,6 +11,8 @@ export default function Home() {
   const [name, setName] = useState("Name of your website")
   const [siteImage, setSiteImage] = useState("/profile.png")
 
+  const [bg, setBg] = useState(1) //number of bg, example bg1.png
+
   const refInput = useRef(null);
 
   function fetchPage(){
@@ -40,45 +42,75 @@ export default function Home() {
       <Head>
         <title>Google Discover Simulator - Test Preview</title>
       </Head>
+      <style dangerouslySetInnerHTML={{__html:`
+        body{
+          background-image: url(/bg${bg}.png);
+          background-repeat: no-repeat;
+          background-position: center;
+          -webkit-background-size: cover;
+          -moz-background-size: cover;
+          -o-background-size: cover;
+          background-size: cover;
+        }
+      
+      `}}>
+        
+      </style>
       <main
-        className="font-[montserrat,sans-serif]"
+        className="font-[Inter,sans-serif]"
       >
-        <div className={`h-auto sm:h-[100vh] flex flex-col pb-[42px] sm:pb-0 gap-4 justify-center items-center`}>
-          <div className='w-full max-w-[1080px] sm:h-[90vh] flex flex-col sm:flex-row justify-between items-center'>
-            <div className="px-4 sm:px-0">
-              <h1 className='text-[42px] font-bold mb-4 text-center sm:text-left'>Google Discover Simulator</h1>
-              <div className='flex flex-col gap-8 max-w-[90%]' >
-                <div className='flex flex-col gap-2'>
-                  <label htmlFor="" className='text-[32px] font-bold'>Your Page</label>
-                  <div className='flex w-full gap-2'>
-                    <input type="text" className='w-full h-[40px] px-2 rounded-sm border-[1px] border-[#ababab]' ref={refInput} placeholder='Your page here' onChange={(e) => {setPage(e.target.value)}}/>
-                    <button className="px-3 bg-[#4285f4] text-white rounded-sm" onClick={() => fetchPage()}>Fetch</button>
-                    <button className="px-3 bg-[#ff641a] text-white rounded-sm" onClick={() => clearPage()}>Clear</button>
-                  </div>  
+        <div className={`h-auto sm:h-[100vh] flex flex-col pb-[42px] sm:pb-0 gap-[28px] sm:gap-[78px] justify-center items-center`}>
+          <div className="block sm:hidden pt-[28px]">
+            <BgButton setBg={setBg}/>
+          </div>
+          <div className='w-full max-w-[1240px] max-h-auto sm:max-h-[768px] flex flex-col sm:flex-row justify-between items-center px-4 sm:px-0 sm:pt-0'>
+            <div className="px-6 bg-[rgba(255,255,255,0.20)] rounded-[30px] backdrop-blur-[25px] py-[62px] sm:px-[104px] h-full w-full sm:max-w-[715px]">
+              <h1 className='text-[39px] font-bold mb-4 text-white'>Google Discover Simulator</h1>
+              <div className='flex flex-col gap-[20px]' >
+                <div className='flex flex-col gap-2.5'>
+                  <label htmlFor="" className='text-[24px] text-[white]'>Your Page</label>
+                  <div className="flex flex-col gap-4">
+                    <input type="text" className='w-full px-[13px] py-[11px] h-[41px] rounded-[5px] sm:max-w-[507px]' ref={refInput} placeholder='Your page here' onChange={(e) => {setPage(e.target.value)}}/>
+                    <div className='flex w-full gap-4'>
+                      <button className="px-[50px] h-[35px] bg-[#2E90FA] text-white rounded-[5px] w-[195px] font-bold" onClick={() => fetchPage()}>Fetch</button>
+                      <button className="px-[50px] h-[35px] bg-[#F79009] text-white rounded-[5px] w-[195px] font-bold" onClick={() => clearPage()}>Clear</button>
+                    </div>  
+                  </div>
+                  
                 </div>
-                <div className='flex flex-col gap-2'>
-                  <label htmlFor="" className='text-[32px] font-bold'>Title</label>
-                  <input type="text" className='h-[40px] px-2 rounded-sm border-[1px] border-[#ababab]' placeholder='Your title here' value={title} onChange={(e) => {setTitle(e.target.value)}}/>
+                <div className='flex flex-col gap-2.5'>
+                  <label htmlFor="" className='text-[24px] text-[white]'>Title</label>
+                  <input type="text" className='w-full px-[13px] py-[11px] h-[41px] rounded-[5px] sm:max-w-[507px]' placeholder='Your title here' value={title} onChange={(e) => {setTitle(e.target.value)}}/>
                 </div>
-                <div className='flex flex-col gap-2'>
-                  <label htmlFor="" className='text-[32px] font-bold'>Image Link</label>
-                  <input type="text" className='h-[40px] px-2 rounded-sm border-[1px] border-[#ababab]' placeholder='Your image link here' value={image} onChange={(e) => {setImage(e.target.value)}}/>
+                <div className='flex flex-col gap-2.5'>
+                  <label htmlFor="" className='text-[24px] text-[white]'>Image Link</label>
+                  <input type="text" className='w-full px-[13px] py-[11px] h-[41px] rounded-[5px] sm:max-w-[507px]' placeholder='Your image link here' value={image} onChange={(e) => {setImage(e.target.value)}}/>
                 </div>
-                <div className='flex flex-col gap-2'>
-                  <label htmlFor="" className='text-[32px] font-bold'>Website Name</label>
-                  <input type="text" className='h-[40px] px-2 rounded-sm border-[1px] border-[#ababab]' placeholder='Your website name here' value={name} onChange={(e) => {setName(e.target.value)}}/>
+                <div className='flex flex-col gap-2.5'>
+                  <label htmlFor="" className='text-[24px] text-[white]'>Website Name</label>
+                  <input type="text" className='w-full px-[13px] py-[11px] h-[41px] rounded-[5px] sm:max-w-[507px]' placeholder='Your website name here' value={name} onChange={(e) => {setName(e.target.value)}}/>
                 </div>
-                <div className='flex flex-col gap-2'>
-                  <label htmlFor="" className='text-[32px] font-bold'>Website Image</label>
-                  <input type="text" className='h-[40px] px-2 rounded-sm border-[1px] border-[#ababab]' placeholder='Your website image link here' value={siteImage} onChange={(e) => {setSiteImage(e.target.value)}}/>
+                <div className='flex flex-col gap-2.5'>
+                  <label htmlFor="" className='text-[24px] text-[white]'>Website Image</label>
+                  <input type="text" className='w-full px-[13px] py-[11px] h-[41px] rounded-[5px] sm:max-w-[507px]' placeholder='Your website image link here' value={siteImage} onChange={(e) => {setSiteImage(e.target.value)}}/>
                 </div>
                 
               </div>
               
             </div>
-            <div id="testPrint" className="bg-[#232323] h-[700px] sm:h-full max-h-[700px] w-full max-w-[380px] rounded-[32px] flex flex-col justify-evenly items-center shadow-google mt-10 sm:mt-0">
-              <div className='bg-[#3e3e3e] w-[80px] h-[10px] rounded-full'></div>
-              <div className='bg-[white] w-[85%] h-[85%] rounded-sm shadow-cellphone'>
+            <div className="bg-[#0B1728] h-[720px] sm:h-full w-full sm:w-[403px] rounded-[48px] flex flex-col justify-evenly items-center shadow-google mt-10 sm:mt-0 relative">
+              <div className="hidden sm:flex justify-center">
+                <BgButton setBg={setBg}/>
+              </div>
+              
+              <div className='bg-[#0B1728] w-[197px] h-[40px] rounded-b-[16px] absolute top-0 flex justify-center'>
+                <div className='bg-[#2C3646] w-[52px] h-[4px] rounded-full absolute top-[19px]'></div>
+                <div className='bg-[#626A78] w-[10px] h-[10px] rounded-full absolute top-[16px] ml-[78px]'></div>
+              </div>
+              <div className='bg-[#0B1728] w-[8px] h-[54px] rounded-l-full absolute left-[-6px] top-[150px]'></div>
+              <div className='bg-[#0B1728] w-[8px] h-[54px] rounded-l-full absolute left-[-6px] top-[220px]'></div>
+              <div className='bg-[#0B1728] w-[8px] h-[100px] rounded-r-full absolute right-[-6px] top-[174px]'></div>
+              <div className='bg-[white] w-[92%] h-[95.5%] rounded-[38px] shadow-cellphone pt-8'>
                 <div className='p-4'>
                   <div className='bg-[white] shadow-google rounded-full h-10 w-full flex items-center justify-between px-2'>
                     <div className='flex items-center gap-2'>
@@ -94,10 +126,9 @@ export default function Home() {
                 <SmallPreview image={image} title={title} name={name} siteImage={siteImage}/>
 
               </div>
-              <div className='bg-[black] w-[40px] h-[40px] rounded-full'></div>
             </div>  
           </div>
-          <h2>By <a href="https://www.linkedin.com/in/guitavano/" target='_blank' className='hover:text-[#4285f4] transition-all'>Guilherme Tavano</a></h2>
+          <h2 className="text-white">By <a href="https://www.linkedin.com/in/guitavano/" target='_blank' className='hover:text-[#4285f4] transition-all'>Guilherme Tavano</a> and <a href="https://www.linkedin.com/in/pedro-henrique-ribeiro-4254701b7/" className='hover:text-[#4285f4] transition-all'>Pedro Henrique</a></h2>
         </div>
       </main>
     </>
@@ -164,5 +195,25 @@ function Footer({name, siteImage} : {name: string; siteImage: string}){
         </svg>
       </div>
     </div>
+  )
+}
+
+function BgButton({setBg}){
+  return(
+    <button 
+    className="sm:absolute sm:bottom-[-50px] text-white flex gap-3 items-center" 
+    onClick={() => {
+      setBg(bg => {
+        if(bg == 4){
+          return 1
+        }
+        return bg + 1
+      })
+    }}>
+      Change background
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+        <path d="M6.97779 4.58201H3.96212C5.49213 2.87832 7.68128 1.88415 9.99998 1.88415C14.475 1.88415 18.1159 5.52496 18.1159 10C18.1159 14.4751 14.4751 18.1159 10 18.1159C5.52496 18.1159 1.88415 14.4751 1.88415 10V9.85002H1.73415H1H0.85V10C0.85 15.0455 4.95458 19.15 10 19.15C15.0455 19.15 19.15 15.0455 19.15 10C19.15 4.95458 15.0455 0.85 10 0.85C7.49425 0.85 5.12084 1.87752 3.40941 3.65364V1.0136V0.863597H3.25941H2.52527H2.37527V1.0136V5.46611V5.61611H2.52527H6.97779H7.12779V5.46611V4.73201V4.58201H6.97779Z" fill="white" fill-opacity="0.9" stroke="white" stroke-width="0.3"/>
+      </svg>
+    </button>
   )
 }

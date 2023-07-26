@@ -60,11 +60,11 @@ export default function Home() {
       <main
         className="font-[Inter,sans-serif]"
       >
-        <div className={`h-auto sm:h-[100vh] flex flex-col pb-[42px] sm:pb-0 gap-[28px] sm:gap-[78px] justify-center items-center`}>
+        <div className={`h-auto sm:h-auto flex flex-col pb-[42px] gap-[28px] sm:gap-[78px] justify-center items-center sm:justify-start sm:py-12`}>
           <div className="block sm:hidden pt-[28px]">
             <BgButton setBg={setBg}/>
           </div>
-          <div className='w-full max-w-[1240px] max-h-auto sm:max-h-[768px] flex flex-col sm:flex-row justify-between items-center px-4 sm:px-0 sm:pt-0'>
+          <div className='w-full max-w-[1240px] sm:h-[768px] max-h-auto sm:max-h-[768px] flex flex-col sm:flex-row justify-between items-center px-4 sm:px-0 sm:pt-0'>
             <div className="px-6 bg-[rgba(255,255,255,0.20)] rounded-[30px] backdrop-blur-[25px] py-[62px] sm:px-[104px] h-full w-full sm:max-w-[715px]">
               <h1 className='text-[39px] font-bold mb-4 text-white'>Google Discover Simulator</h1>
               <div className='flex flex-col gap-[20px]' >

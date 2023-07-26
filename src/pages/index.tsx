@@ -198,7 +198,7 @@ function Footer({name, siteImage} : {name: string; siteImage: string}){
   )
 }
 
-function BgButton({setBg}){
+function BgButton({setBg} : {setBg(): number}){
   return(
     <button 
     className="sm:absolute sm:bottom-[-50px] text-white flex gap-3 items-center" 

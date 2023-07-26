@@ -70,7 +70,7 @@ export default function Home() {
                 <div className='flex flex-col gap-2.5'>
                   <label htmlFor="" className='text-[24px] text-[white]'>Your Page</label>
                   <div className="flex flex-col gap-4">
-                    <input type="text" className='w-full px-[13px] py-[11px] h-[41px] rounded-[5px] sm:max-w-[507px]' ref={refInput} placeholder='Your page here' onChange={(e) => {setPage(e.target.value)}}/>
+                    <input type="text" className='w-full text-[black] px-[13px] py-[11px] h-[41px] rounded-[5px] sm:max-w-[507px]' ref={refInput} placeholder='Your page here' onChange={(e) => {setPage(e.target.value)}}/>
                     <div className='flex w-full gap-4'>
                       <button className="px-[50px] h-[35px] bg-[#2E90FA] text-white rounded-[5px] w-[195px] font-bold" onClick={() => fetchPage()}>Fetch</button>
                       <button className="px-[50px] h-[35px] bg-[#F79009] text-white rounded-[5px] w-[195px] font-bold" onClick={() => clearPage()}>Clear</button>
@@ -80,19 +80,19 @@ export default function Home() {
                 </div>
                 <div className='flex flex-col gap-2.5'>
                   <label htmlFor="" className='text-[24px] text-[white]'>Title</label>
-                  <input type="text" className='w-full px-[13px] py-[11px] h-[41px] rounded-[5px] sm:max-w-[507px]' placeholder='Your title here' value={title} onChange={(e) => {setTitle(e.target.value)}}/>
+                  <input type="text" className='w-full text-[black] px-[13px] py-[11px] h-[41px] rounded-[5px] sm:max-w-[507px]' placeholder='Your title here' value={title} onChange={(e) => {setTitle(e.target.value)}}/>
                 </div>
                 <div className='flex flex-col gap-2.5'>
                   <label htmlFor="" className='text-[24px] text-[white]'>Image Link</label>
-                  <input type="text" className='w-full px-[13px] py-[11px] h-[41px] rounded-[5px] sm:max-w-[507px]' placeholder='Your image link here' value={image} onChange={(e) => {setImage(e.target.value)}}/>
+                  <input type="text" className='w-full text-[black] px-[13px] py-[11px] h-[41px] rounded-[5px] sm:max-w-[507px]' placeholder='Your image link here' value={image} onChange={(e) => {setImage(e.target.value)}}/>
                 </div>
                 <div className='flex flex-col gap-2.5'>
                   <label htmlFor="" className='text-[24px] text-[white]'>Website Name</label>
-                  <input type="text" className='w-full px-[13px] py-[11px] h-[41px] rounded-[5px] sm:max-w-[507px]' placeholder='Your website name here' value={name} onChange={(e) => {setName(e.target.value)}}/>
+                  <input type="text" className='w-full text-[black] px-[13px] py-[11px] h-[41px] rounded-[5px] sm:max-w-[507px]' placeholder='Your website name here' value={name} onChange={(e) => {setName(e.target.value)}}/>
                 </div>
                 <div className='flex flex-col gap-2.5'>
                   <label htmlFor="" className='text-[24px] text-[white]'>Website Image</label>
-                  <input type="text" className='w-full px-[13px] py-[11px] h-[41px] rounded-[5px] sm:max-w-[507px]' placeholder='Your website image link here' value={siteImage} onChange={(e) => {setSiteImage(e.target.value)}}/>
+                  <input type="text" className='w-full text-[black] px-[13px] py-[11px] h-[41px] rounded-[5px] sm:max-w-[507px]' placeholder='Your website image link here' value={siteImage} onChange={(e) => {setSiteImage(e.target.value)}}/>
                 </div>
                 
               </div>
@@ -142,7 +142,7 @@ function BigPreview({image, title, name, siteImage} : {image: string; title: str
         <div className={`h-[180px] bg-center rounded-[16px] bg-cover`} style={{backgroundImage: `url('${image}')`}}>
           
         </div>
-        <h2 className='font-bold pt-2 line-clamp-3'>{title}</h2>
+        <h2 className='font-bold pt-2 line-clamp-3 text-[black]'>{title}</h2>
       
         <Footer name={name} siteImage={siteImage}/>
       </div>
@@ -155,7 +155,7 @@ function SmallPreview({image, title, name, siteImage} : {image: string; title: s
     <div>
       <div className='p-4 flex flex-col'>
         <div className='flex justify-between gap-2'>
-          <h2 className='font-bold pt-2 line-clamp-4'>{title}</h2>
+          <h2 className='font-bold pt-2 line-clamp-4 text-[black]'>{title}</h2>
           <div className='block'>
             <div className={`h-[60px] w-[100px] bg-center rounded-[8px] bg-cover`} style={{backgroundImage: `url('${image}')`}}>
             
@@ -175,7 +175,7 @@ function Footer({name, siteImage} : {name: string; siteImage: string}){
         <div className='w-6 h-6 bg-[#f0f0f0] rounded-full'>
           <img src={siteImage} alt="" className='w-full rounded-full'/>
         </div>
-        <span className='text-[12px]'>{name}</span>
+        <span className='text-[12px] text-[black]'>{name}</span>
       </div>
       <div className='flex items-center gap-4'>
         <svg xmlns="http://www.w3.org/2000/svg"  fill="#000000" height="18px" width="18px" version="1.1" id="Capa_1" viewBox="0 0 471.701 471.701">

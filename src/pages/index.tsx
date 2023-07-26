@@ -41,6 +41,7 @@ export default function Home() {
     <>
       <Head>
         <title>Google Discover Simulator - Test Preview</title>
+        <meta name="description" content="Explore our free simulator of Google Discover. Test how your page will be for the users. See the preview now."></meta>
       </Head>
       <style dangerouslySetInnerHTML={{__html:`
         body{

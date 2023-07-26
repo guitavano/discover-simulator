@@ -99,7 +99,7 @@ export default function Home() {
               
             </div>
             <div className="bg-[#0B1728] h-[720px] sm:h-full w-full sm:w-[403px] rounded-[48px] flex flex-col justify-evenly items-center shadow-google mt-10 sm:mt-0 relative">
-              <div className="hidden sm:flex justify-center">
+              <div className="hidden sm:flex absolute bottom-[-50px] justify-center">
                 <BgButton setBg={setBg}/>
               </div>
               
@@ -201,7 +201,7 @@ function Footer({name, siteImage} : {name: string; siteImage: string}){
 function BgButton({setBg} : {setBg: Dispatch<SetStateAction<number>>}){
   return(
     <button 
-    className="sm:absolute sm:bottom-[-50px] text-white flex gap-3 items-center" 
+    className=" text-white flex gap-3 items-center" 
     onClick={() => {
       setBg(bg => {
         if(bg == 4){
@@ -212,7 +212,7 @@ function BgButton({setBg} : {setBg: Dispatch<SetStateAction<number>>}){
     }}>
       Change background
       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-        <path d="M6.97779 4.58201H3.96212C5.49213 2.87832 7.68128 1.88415 9.99998 1.88415C14.475 1.88415 18.1159 5.52496 18.1159 10C18.1159 14.4751 14.4751 18.1159 10 18.1159C5.52496 18.1159 1.88415 14.4751 1.88415 10V9.85002H1.73415H1H0.85V10C0.85 15.0455 4.95458 19.15 10 19.15C15.0455 19.15 19.15 15.0455 19.15 10C19.15 4.95458 15.0455 0.85 10 0.85C7.49425 0.85 5.12084 1.87752 3.40941 3.65364V1.0136V0.863597H3.25941H2.52527H2.37527V1.0136V5.46611V5.61611H2.52527H6.97779H7.12779V5.46611V4.73201V4.58201H6.97779Z" fill="white" fill-opacity="0.9" stroke="white" stroke-width="0.3"/>
+        <path d="M6.97779 4.58201H3.96212C5.49213 2.87832 7.68128 1.88415 9.99998 1.88415C14.475 1.88415 18.1159 5.52496 18.1159 10C18.1159 14.4751 14.4751 18.1159 10 18.1159C5.52496 18.1159 1.88415 14.4751 1.88415 10V9.85002H1.73415H1H0.85V10C0.85 15.0455 4.95458 19.15 10 19.15C15.0455 19.15 19.15 15.0455 19.15 10C19.15 4.95458 15.0455 0.85 10 0.85C7.49425 0.85 5.12084 1.87752 3.40941 3.65364V1.0136V0.863597H3.25941H2.52527H2.37527V1.0136V5.46611V5.61611H2.52527H6.97779H7.12779V5.46611V4.73201V4.58201H6.97779Z" fill="white" fillOpacity="0.9" stroke="white" strokeWidth="0.3"/>
       </svg>
     </button>
   )

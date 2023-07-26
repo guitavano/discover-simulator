@@ -128,7 +128,7 @@ export default function Home() {
               </div>
             </div>  
           </div>
-          <h2 className="text-white">By <a href="https://www.linkedin.com/in/guitavano/" target='_blank' className='hover:text-[#4285f4] transition-all'>Guilherme Tavano</a> and <a href="https://www.linkedin.com/in/pedro-henrique-ribeiro-4254701b7/" className='hover:text-[#4285f4] transition-all'>Pedro Henrique</a></h2>
+          <h2 className="text-white max-w-[300px] text-center">By <a href="https://www.linkedin.com/in/guitavano/" target='_blank' className='hover:text-[#4285f4] transition-all'>Guilherme Tavano</a>, <a href="https://www.linkedin.com/in/pedro-henrique-ribeiro-4254701b7/" target='_blank' className='hover:text-[#4285f4] transition-all'>Pedro Henrique</a> and <a href="https://www.linkedin.com/in/victorsilveirabrisola/" target='_blank' className='hover:text-[#4285f4] transition-all'>Víctor Brisola</a></h2>
         </div>
       </main>
     </>

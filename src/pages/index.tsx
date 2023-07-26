@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react'
+import { useState, useRef, Dispatch, SetStateAction } from 'react'
 
 import Head from '../../node_modules/next/head'
 
@@ -198,7 +198,7 @@ function Footer({name, siteImage} : {name: string; siteImage: string}){
   )
 }
 
-function BgButton({setBg} : {setBg(): number}){
+function BgButton({setBg} : {setBg: Dispatch<SetStateAction<number>>}){
   return(
     <button 
     className="sm:absolute sm:bottom-[-50px] text-white flex gap-3 items-center" 

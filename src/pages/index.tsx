@@ -11,14 +11,18 @@ export default function Home() {
   const [name, setName] = useState("Name of your website")
   const [siteImage, setSiteImage] = useState("/profile.png")
 
+  const [loading, setLoading] = useState(false)
+
   const [bg, setBg] = useState(1) //number of bg, example bg1.png
 
   const refInput = useRef(null);
 
   function fetchPage() {
+    setLoading(true)
     fetch(`/api/url?url=${refInput.current ? (refInput.current as HTMLInputElement).value : ""}`)
       .then(response => response.json())
       .then(result => {
+        setLoading(false)
         setTitle(result.title)
         setImage(result.image)
         setName(result.name)
@@ -66,6 +70,30 @@ export default function Home() {
         ol{
           padding-left: 16px;
         }
+        .lds-dual-ring {
+          display: inline-block;
+          width: 28px;
+          height: 28px;
+        }
+        .lds-dual-ring:after {
+          content: " ";
+          display: block;
+          width:16px;
+          height: 16px;
+          margin: 8px;
+          border-radius: 50%;
+          border: 6px solid #fff;
+          border-color: #fff transparent #fff transparent;
+          animation: lds-dual-ring 1.2s linear infinite;
+        }
+        @keyframes lds-dual-ring {
+          0% {
+            transform: rotate(0deg);
+          }
+          100% {
+            transform: rotate(360deg);
+          }
+        }        
       
       `}}>
 
@@ -87,7 +115,7 @@ export default function Home() {
                   <div className="flex flex-col gap-4">
                     <input type="text" className='w-full text-[black] px-[13px] py-[11px] h-[41px] rounded-[5px] sm:max-w-[507px]' ref={refInput} placeholder='Your page here' onChange={(e) => { setPage(e.target.value) }} />
                     <div className='flex w-full gap-4'>
-                      <button className="px-[50px] h-[35px] bg-[#2E90FA] text-white rounded-[5px] w-[195px] font-bold" onClick={() => fetchPage()}>Fetch</button>
+                      <button className="px-[50px] h-[35px] bg-[#2E90FA] text-white rounded-[5px] w-[195px] font-bold" onClick={() => fetchPage()}>{loading ? <div className="lds-dual-ring"></div> : "Fetch"}</button>
                       <button className="px-[50px] h-[35px] bg-[#F79009] text-white rounded-[5px] w-[195px] font-bold" onClick={() => clearPage()}>Clear</button>
                     </div>
                   </div>
